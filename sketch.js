@@ -10,12 +10,12 @@ var dogSprite;
 
 var feedPet, addFood, fedTime,lastFed;
 var foodObj;
-var bedroom, garden, washroom;
-var bedroomImage, ardenImage,washroomImage;
+var bedroomImage, gardenImage,washroomImage;
 var gameState;
 var readState;
 var changeState;
 var currentTime;
+var livingRoomImage;
 
 function preload()
 {
@@ -26,6 +26,7 @@ function preload()
   bedroomImage=loadImage("images/Bed Room.png");
   gardenImage=loadImage("images/Garden.png");
   washroomImage=loadImage("images/Wash Room.png");
+  livingRoomImage=loadImage("images/Living Room.png")
 }
 
 function setup() {
@@ -57,6 +58,7 @@ function setup() {
   readState.on("value", function(data)
   {
     gameState=data.val();
+    console.log(gameState);
   })
 }
 
@@ -85,9 +87,9 @@ function draw() {
 
   fill(255,255,254);
   textSize(15);
-  console.log(lastFed);
-  console.log(foodStock);
-  console.log(gameState);
+  //console.log(lastFed);
+  //console.log(foodStock);
+  //console.log(gameState);
   if(lastFed>=12)
   {
     text("Last Feed: "+ lastFed%12 + "PM", 300,30)
@@ -106,10 +108,12 @@ function draw() {
   stroke(10);
   text("Food Stock:" +foodStock, 20,30);
 
-  if(gameState!="Hungry")
+  if(gameState !="Hungry")
   {
    feedPet.hide();
    addFood.hide();
+   feedDog.hide();
+   addFoods.hide();
    dogSprite.remove();
   }
   else
@@ -120,7 +124,7 @@ function draw() {
   }
 
   currentTime=hour();
-  console.log(currentTime);
+ // console.log(currentTime);
   if(currentTime==(lastFed+1))
   {
     update("Playing");
@@ -140,6 +144,7 @@ function draw() {
   {
     update("Hungry");
     foodObj.display();
+    //background(livingRoomImage, 100,100);
   }
   drawSprites();
 }
@@ -188,17 +193,17 @@ function readStock(data)
   foodObj.updateFoodStock(foodStock);
 }
 
- bedroom()
+  function bedroom()
 {
   background(bedroomImage, 550, 500);
 }
 
- garden()
+  function garden()
 {
   background(gardenImage, 550, 500);
 }
 
- washroom()
+  function washroom()
 {
   background(washroomImage, 550, 500);
 }
