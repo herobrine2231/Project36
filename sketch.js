@@ -92,15 +92,15 @@ function draw() {
   //console.log(gameState);
   if(lastFed>=12)
   {
-    text("Last Feed: "+ lastFed%12 + "PM", 300,30)
+    text("Last Feed: "+ lastFed%12 + "PM", 400,30)
   }
   else if(lastFed==0)
   {
-    text("Last Feed: 12 AM", 300,30);
+    text("Last Feed: 12 AM", 400,30);
   }
   else
   {
-    text("Last Feed: " +lastFed +"AM", 300,30);
+    text("Last Feed: " +lastFed +"AM", 400,30);
   }
 
   textSize(15);
