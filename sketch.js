@@ -32,7 +32,7 @@ function preload()
 function setup() {
 
   database = firebase.database();
-  console.log(database);
+  //console.log(database);
 
   createCanvas(500,500);
   
@@ -58,7 +58,8 @@ function setup() {
   readState.on("value", function(data)
   {
     gameState=data.val();
-    console.log(gameState);
+   // console.log(gameState);
+   //console.log(data.val());
   })
 }
 
@@ -87,8 +88,8 @@ function draw() {
 
   fill(255,255,254);
   textSize(15);
-  //console.log(lastFed);
- // console.log(foodStock);
+ // console.log(lastFed);
+ //console.log(foodStock);
   //console.log(gameState);
   if(lastFed>=12)
   {
@@ -108,7 +109,7 @@ function draw() {
   stroke(10);
   text("Food Stock:" +foodStock, 20,30);
 
-  if(gameState != "Hungry")
+  if(gameState!= "Hungry")
   {
    feedPet.remove();
    addFood.remove();
@@ -124,7 +125,7 @@ function draw() {
 
   console.log(gameState);
   currentTime=hour();
-  //console.log(currentTime);
+ // console.log(currentTime);
   if(currentTime==(lastFed+1))
   {
     update("Playing");
