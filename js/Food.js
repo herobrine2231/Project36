@@ -33,6 +33,21 @@ class Food
         this.lastFed=lastFed;
     }
 
+     bedroom()
+{
+  background(bedroomImage,550.500);
+}
+
+   garden()
+{
+  background(gardenImage,550,500);
+}
+
+   washroom()
+{
+  background(washroomImage,550,500);
+}
+
     display()
     {
         var x=80,y=100;

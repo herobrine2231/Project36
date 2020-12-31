@@ -88,7 +88,7 @@ function draw() {
   fill(255,255,254);
   textSize(15);
   //console.log(lastFed);
-  //console.log(foodStock);
+ // console.log(foodStock);
   //console.log(gameState);
   if(lastFed>=12)
   {
@@ -108,12 +108,11 @@ function draw() {
   stroke(10);
   text("Food Stock:" +foodStock, 20,30);
 
-  if(gameState !="Hungry")
+  if(gameState != "Hungry")
   {
-   feedPet.hide();
-   addFood.hide();
-   feedDog.hide();
-   addFoods.hide();
+   feedPet.remove();
+   addFood.remove();
+   //feedDog.remove();
    dogSprite.remove();
   }
   else
@@ -123,8 +122,9 @@ function draw() {
     dogSprite.addImage(dogImage4);
   }
 
+  console.log(gameState);
   currentTime=hour();
- // console.log(currentTime);
+  //console.log(currentTime);
   if(currentTime==(lastFed+1))
   {
     update("Playing");
@@ -193,20 +193,7 @@ function readStock(data)
   foodObj.updateFoodStock(foodStock);
 }
 
-  function bedroom()
-{
-  background(bedroomImage, 550, 500);
-}
-
-  function garden()
-{
-  background(gardenImage, 550, 500);
-}
-
-  function washroom()
-{
-  background(washroomImage, 550, 500);
-}
+  
 
 function update(state)
 {
@@ -216,4 +203,6 @@ function update(state)
     }
   );
 }
+
+
 
