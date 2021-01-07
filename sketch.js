@@ -25,6 +25,7 @@ function preload()
   dogImage4=loadImage("images/happydog.png");
   bedroomImage=loadImage("images/Bed Room.png");
   gardenImage=loadImage("images/Garden.png");
+  gardenImage.scale=100;
   washroomImage=loadImage("images/Wash Room.png");
   livingRoomImage=loadImage("images/Living Room.png")
 }
@@ -32,9 +33,10 @@ function preload()
 function setup() {
 
   database = firebase.database();
+  
   //console.log(database);
 
-  createCanvas(500,500);
+  createCanvas(400,500);
   
   dogSprite=createSprite(width/2+100,200,10,10);
   dogSprite.addImage(dogImage1);
@@ -42,6 +44,12 @@ function setup() {
 
   foodStock=database.ref('Food');
   foodStock.on("value", readStock);
+
+  fedTime=database.ref('FeedTime');
+  fedTime.on("value", function(data)
+  {
+    lastFed=data.val();
+  });
 
   foodObj= new Food();
 
@@ -66,7 +74,7 @@ function setup() {
 
 function draw() {  
 
-  background(46,139,87);
+ background(46,139,87);
 
   foodObj.display();
  /* if(keyWentDown(UP_ARROW))
@@ -80,11 +88,7 @@ function draw() {
 
   
 
-  fedTime=database.ref('FeedTime');
-  fedTime.on("value", function(data)
-  {
-    lastFed=data.val();
-  });
+  
 
   fill(255,255,254);
   textSize(15);
@@ -109,19 +113,7 @@ function draw() {
   stroke(10);
   text("Food Stock:" +foodStock, 20,30);
 
-  if(gameState!= "Hungry")
-  {
-   feedPet.remove();
-   addFood.remove();
-   //feedDog.remove();
-   dogSprite.remove();
-  }
-  else
-  {
-    feedPet.show();
-    addFood.show();
-    dogSprite.addImage(dogImage4);
-  }
+  
 
   console.log(gameState);
   currentTime=hour();
@@ -145,7 +137,21 @@ function draw() {
   {
     update("Hungry");
     foodObj.display();
-    //background(livingRoomImage, 100,100);
+  }
+
+
+  if(gameState!= "Hungry")
+  {
+   feedPet.remove();
+   addFood.remove();
+   //feedDog.remove();
+   dogSprite.remove();
+  }
+  else
+  {
+    feedPet.show();
+    addFood.show();
+    dogSprite.addImage(dogImage4);
   }
   drawSprites();
 }

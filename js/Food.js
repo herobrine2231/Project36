@@ -35,7 +35,7 @@ class Food
 
      bedroom()
 {
-  background(bedroomImage,550.500);
+  background(bedroomImage,550,500);
 }
 
    garden()
