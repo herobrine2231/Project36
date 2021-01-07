@@ -33,27 +33,29 @@ class Food
         this.lastFed=lastFed;
     }
 
-     bedroom()
-{
-  background(bedroomImage,550,500);
-}
-
-   garden()
-{
-  background(gardenImage,550,500);
-}
-
-   washroom()
-{
-  background(washroomImage,550,500);
-}
+    
 
     display()
     {
+        background(46,139,87);
+        fill(255,255,254);
+        textSize(15);
+        if(lastFed>=12)
+         {
+            text("Last Feed: "+ lastFed%12 + "PM", 400,30)
+         }
+        else if(lastFed==0)
+        {
+        text("Last Feed: 12 AM", 400,30);
+         }
+        else
+        {
+        text("Last Feed: " +lastFed +"AM", 400,30);
+        }
         var x=80,y=100;
 
         imageMode(CENTER);
-        image(this.image,100,100,50,50);
+      //  image(this.image,100,100,50,50);
 
         if(this.foodStock!=0)
         {
@@ -70,4 +72,20 @@ class Food
         }
     }
     
+    bedroom()
+    {
+      background(bedroomImage,550,500);
+    
+    }
+    
+       garden()
+    {
+      background(gardenImage,550,500);
+      
+    }
+    
+       washroom()
+    {
+      background(washroomImage,550,500);
+    }
 }

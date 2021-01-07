@@ -25,7 +25,6 @@ function preload()
   dogImage4=loadImage("images/happydog.png");
   bedroomImage=loadImage("images/Bed Room.png");
   gardenImage=loadImage("images/Garden.png");
-  gardenImage.scale=100;
   washroomImage=loadImage("images/Wash Room.png");
   livingRoomImage=loadImage("images/Living Room.png")
 }
@@ -36,7 +35,7 @@ function setup() {
   
   //console.log(database);
 
-  createCanvas(400,500);
+  createCanvas(550,500);
   
   dogSprite=createSprite(width/2+100,200,10,10);
   dogSprite.addImage(dogImage1);
@@ -74,7 +73,7 @@ function setup() {
 
 function draw() {  
 
- background(46,139,87);
+ //background(46,139,87);
 
   foodObj.display();
  /* if(keyWentDown(UP_ARROW))
@@ -85,28 +84,6 @@ function draw() {
 
 
   //add styles here
-
-  
-
-  
-
-  fill(255,255,254);
-  textSize(15);
- // console.log(lastFed);
- //console.log(foodStock);
-  //console.log(gameState);
-  if(lastFed>=12)
-  {
-    text("Last Feed: "+ lastFed%12 + "PM", 400,30)
-  }
-  else if(lastFed==0)
-  {
-    text("Last Feed: 12 AM", 400,30);
-  }
-  else
-  {
-    text("Last Feed: " +lastFed +"AM", 400,30);
-  }
 
   textSize(15);
   fill("white");
